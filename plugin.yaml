@@ -1,0 +1,30 @@
+name: hostinger
+version: 1.0.0
+description: "Control Hostinger VPS and shared hosting from Hermes: VPS lifecycle, snapshots, firewall, DNS, domains, SSL, deployments, and billing/usage. Wraps the Hostinger REST API."
+author: J182Razor
+license: MIT
+homepage: https://github.com/J182Razor/hermes-hostinger-plugin
+tags: [hosting, vps, dns, domains, devops]
+requires_hermes: ">=0.22.0"
+provides_tools:
+  - list_vps
+  - vps_action
+  - vps_snapshots
+  - vps_firewall
+  - list_domains
+  - dns_records
+  - ssl_status
+  - deploy
+  - billing_summary
+  - list_hosting
+provides_hooks: []
+requires_env:
+  - name: HOSTINGER_API_TOKEN
+    description: "Hostinger API token (https://developers.hostinger.com/)"
+    url: "https://developers.hostinger.com/"
+    secret: true
+config_schema:
+  base_url: {type: str, default: "https://developers.hostinger.com/api", label: "API base URL"}
+  timeout: {type: int, default: 30}
+python_dependencies:
+  - "httpx>=0.27,<1"
